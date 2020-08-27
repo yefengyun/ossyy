@@ -8,7 +8,8 @@ LABEL description="ossyy" \
 
 
 # mkdir base path
-RUN mkdir -p /home/ossyy/
+RUN mkdir -p /home/ossyy \
+	mkdir -p /var/log/ossyy
 
 #change datazone
 COPY Shanghai /etc/localtime
