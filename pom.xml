@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tong</groupId>
 	<artifactId>ossyy</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>project Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
