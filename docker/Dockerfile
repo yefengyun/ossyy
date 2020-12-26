@@ -1,4 +1,4 @@
-FROM java:8
+FROM jre1.8:1.0
 
 MAINTAINER 8577
 

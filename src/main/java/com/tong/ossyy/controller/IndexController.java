@@ -2,6 +2,7 @@ package com.tong.ossyy.controller;
 
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,14 @@ import com.tong.ossyy.user.UserService;
 import com.tong.ossyy.util.ResultJson;
 import com.tong.ossyy.util.VerifyCodeUtil;
 
+import ws.schild.jave.AudioAttributes;
+import ws.schild.jave.Encoder;
+import ws.schild.jave.EncoderException;
+import ws.schild.jave.EncodingAttributes;
+import ws.schild.jave.InputFormatException;
+import ws.schild.jave.MultimediaObject;
+
+
 @Controller
 public class IndexController {
 	private static final Logger logger = LogManager.getLogger(IndexController.class);
@@ -44,7 +53,38 @@ public class IndexController {
     public String forget() {
         return "index/forget";
     }
-
+    
+    @RequestMapping("/towav")
+    @ResponseBody
+    public String towav() {
+    	String path=System.getProperty("user.dir");
+    	File source = new File(path+"/src/main/resources/music/aaaa.mp3");
+    	File target = new File(path+"/src/main/resources/music/aaaa.wav");
+    	AudioAttributes audio = new AudioAttributes();
+    	audio.setCodec("pcm_s16le");
+    	audio.setBitRate(new Integer(128000));
+    	audio.setChannels(new Integer(1));
+    	audio.setSamplingRate(new Integer(8000));
+    	EncodingAttributes attrs = new EncodingAttributes();
+    	attrs.setFormat("wav");    	
+    	attrs.setAudioAttributes(audio);
+    	Encoder encoder = new Encoder();
+    	try {
+			encoder.encode(new MultimediaObject(source), target, attrs);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InputFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EncoderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+        return "success";
+    }
+    
     @RequestMapping("/verifycode")
     public void verifycode(HttpServletRequest request, HttpServletResponse response) {
     	VerifyCodeUtil vcode=new VerifyCodeUtil();
