@@ -57,9 +57,8 @@ public class IndexController {
     @RequestMapping("/towav")
     @ResponseBody
     public String towav() {
-    	String path=System.getProperty("user.dir");
-    	File source = new File(path+"/src/main/resources/music/aaaa.mp4");
-    	File target = new File(path+"/src/main/resources/music/aaaa.wav");
+    	File source = new File("/home/resources/aaaa.mp4");
+    	File target = new File("/home/resources/aaaa.wav");
     	AudioAttributes audio = new AudioAttributes();
     	audio.setCodec("pcm_s16le");
     	audio.setBitRate(new Integer(128000));
