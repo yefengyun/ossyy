@@ -58,7 +58,7 @@ public class IndexController {
     @ResponseBody
     public String towav() {
     	String path=System.getProperty("user.dir");
-    	File source = new File(path+"/src/main/resources/music/aaaa.mp3");
+    	File source = new File(path+"/src/main/resources/music/aaaa.mp4");
     	File target = new File(path+"/src/main/resources/music/aaaa.wav");
     	AudioAttributes audio = new AudioAttributes();
     	audio.setCodec("pcm_s16le");
